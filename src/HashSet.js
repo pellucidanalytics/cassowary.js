@@ -34,7 +34,7 @@ c.HashSet = c.inherit({
     return (s.indexOf(item) != -1);
   },
 
-  delete: function(item) {
+  "delete": function(item) {
     var io = this.storage.indexOf(item);
     if (io == -1) { return null; }
     this.storage.splice(io, 1)[0];

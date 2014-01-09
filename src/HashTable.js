@@ -78,8 +78,8 @@ if (false && typeof Map != "undefined") {
       this._keys = [];
     },
 
-    delete: function(key) {
-      if (this._store.delete(key) && this.size > 0) {
+    "delete": function(key) {
+      if (this._store["delete"](key) && this.size > 0) {
         delete this._keys[this._keys.indexOf(key)];
         this.size--;
       }
@@ -195,7 +195,7 @@ if (false && typeof Map != "undefined") {
       }
     },
 
-    delete: function(key) {
+    "delete": function(key) {
       key = keyCode(key);
       if (!this._store.hasOwnProperty(key)) {
         return;

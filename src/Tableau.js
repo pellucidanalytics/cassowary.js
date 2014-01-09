@@ -38,7 +38,7 @@ c.Tableau = c.inherit({
     c.trace && console.log("c.Tableau::noteRemovedVariable: ", v, subject);
     var column = this.columns.get(v);
     if (subject && column) {
-      column.delete(subject);
+      column["delete"](subject);
     }
   },
 
@@ -120,17 +120,17 @@ c.Tableau = c.inherit({
     if (c.trace) c.fnenterprint("removeColumn:" + aVar);
     var rows = /* Set */ this.columns.get(aVar);
     if (rows) {
-      this.columns.delete(aVar);
+      this.columns["delete"](aVar);
       rows.each(function(clv) {
         var expr = /* c.Expression */this.rows.get(clv);
-        expr.terms.delete(aVar);
+        expr.terms["delete"](aVar);
       }, this);
     } else {
       if (c.trace) console.log("Could not find var", aVar, "in columns");
     }
     if (aVar.isExternal) {
-      this._externalRows.delete(aVar);
-      this._externalParametricVars.delete(aVar);
+      this._externalRows["delete"](aVar);
+      this._externalParametricVars["delete"](aVar);
     }
   },
 
@@ -142,14 +142,14 @@ c.Tableau = c.inherit({
       var varset = this.columns.get(clv);
       if (varset != null) {
         if (c.trace) console.log("removing from varset:", aVar);
-        varset.delete(aVar);
+        varset["delete"](aVar);
       }
     }, this);
-    this._infeasibleRows.delete(aVar);
+    this._infeasibleRows["delete"](aVar);
     if (aVar.isExternal) {
-      this._externalRows.delete(aVar);
+      this._externalRows["delete"](aVar);
     }
-    this.rows.delete(aVar);
+    this.rows["delete"](aVar);
     if (c.trace) c.fnexitprint("returning " + expr);
     return expr;
   },
@@ -170,10 +170,10 @@ c.Tableau = c.inherit({
 
     if (oldVar.isExternal) {
       this._externalRows.add(oldVar);
-      this._externalParametricVars.delete(oldVar);
+      this._externalParametricVars["delete"](oldVar);
     }
 
-    this.columns.delete(oldVar);
+    this.columns["delete"](oldVar);
   },
 
   columnsHasKey: function(subject /*c.AbstractVariable*/) {

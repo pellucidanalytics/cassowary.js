@@ -7,7 +7,7 @@
   "use strict";
 
   c.Error = c.inherit({
-    // extends: Error,
+    // "extends": Error,
     initialize: function(s /*String*/) { if (s) { this._description = s; } },
     _name: "c.Error",
     _description: "An error has occured in Cassowary",
@@ -19,7 +19,7 @@
 
   var errorType = function(name, error) {
     return c.inherit({
-      extends: c.Error,
+      "extends": c.Error,
       initialize: function() { c.Error.apply(this, arguments); },
       _name: name||"", _description: error||""
     });

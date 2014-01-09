@@ -10,7 +10,7 @@ var epsilon = 1e-8;
 var weak = c.Strength.weak;
 
 c.SimplexSolver = c.inherit({
-  extends: c.Tableau,
+  "extends": c.Tableau,
   initialize: function(){
 
     c.Tableau.call(this);
@@ -207,7 +207,7 @@ c.SimplexSolver = c.inherit({
       }, this);
     }
     var marker = this._markerVars.get(cn);
-    this._markerVars.delete(cn);
+    this._markerVars["delete"](cn);
     if (marker == null) {
       throw new c.InternalError("Constraint not found in removeConstraintInternal");
     }
@@ -279,19 +279,19 @@ c.SimplexSolver = c.inherit({
     if (cn.isStayConstraint) {
       if (eVars != null) {
         for (var i = 0; i < this._stayPlusErrorVars.length; i++) {
-          eVars.delete(this._stayPlusErrorVars[i]);
-          eVars.delete(this._stayMinusErrorVars[i]);
+          eVars["delete"](this._stayPlusErrorVars[i]);
+          eVars["delete"](this._stayMinusErrorVars[i]);
         }
       }
     } else if (cn.isEditConstraint) {
       c.assert(eVars != null, "eVars != null");
       var cei = this._editVarMap.get(cn.variable);
       this.removeColumn(cei.editMinus);
-      this._editVarMap.delete(cn.variable);
+      this._editVarMap["delete"](cn.variable);
     }
 
     if (eVars != null) {
-      this._errorVars.delete(eVars);
+      this._errorVars["delete"](eVars);
     }
 
     if (this.autoSolve) {
@@ -572,7 +572,7 @@ c.SimplexSolver = c.inherit({
     // need to handle infeasible rows
     while (this._infeasibleRows.size) {
       var exitVar = this._infeasibleRows.values()[0];
-      this._infeasibleRows.delete(exitVar);
+      this._infeasibleRows["delete"](exitVar);
       var entryVar = null;
       var expr = this.rows.get(exitVar);
       // exitVar might have become basic after some other pivoting
@@ -865,7 +865,7 @@ c.SimplexSolver = c.inherit({
       // entry var is no longer a parametric variable since we're moving
       // it into the basis
       console.log("entryVar is external!");
-      this._externalParametricVars.delete(entryVar);
+      this._externalParametricVars["delete"](entryVar);
     }
     */
 

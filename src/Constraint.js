@@ -34,14 +34,14 @@ var EditOrStayCtor = function(cv /*c.Variable*/, strength /*c.Strength*/, weight
 };
 
 c.EditConstraint = c.inherit({
-  extends: c.AbstractConstraint,
+  "extends": c.AbstractConstraint,
   initialize: function() { EditOrStayCtor.apply(this, arguments); },
   isEditConstraint: true,
   toString: function() { return "edit:" + ts.call(this); },
 });
 
 c.StayConstraint = c.inherit({
-  extends: c.AbstractConstraint,
+  "extends": c.AbstractConstraint,
   initialize: function() { EditOrStayCtor.apply(this, arguments); },
   isStayConstraint: true,
   toString: function() { return "stay:" + ts.call(this); },
@@ -49,7 +49,7 @@ c.StayConstraint = c.inherit({
 
 var lc =
 c.Constraint = c.inherit({
-  extends: c.AbstractConstraint,
+  "extends": c.AbstractConstraint,
   initialize: function(cle /*c.Expression*/,
                        strength /*c.Strength*/,
                        weight /*double*/) {
@@ -59,7 +59,7 @@ c.Constraint = c.inherit({
 });
 
 c.Inequality = c.inherit({
-  extends: c.Constraint,
+  "extends": c.Constraint,
 
   _cloneOrNewCle: function(cle) {
     // FIXME(D4): move somewhere else?
@@ -170,7 +170,7 @@ c.Inequality = c.inherit({
 });
 
 c.Equation = c.inherit({
-  extends: c.Constraint,
+  "extends": c.Constraint,
   initialize: function(a1, a2, a3, a4) {
     // FIXME(slightlyoff): this is just a huge mess.
     if (a1 instanceof c.Expression && !a2 || a2 instanceof c.Strength) {

@@ -142,7 +142,7 @@ c.Expression = c.inherit({
         if (solver) {
           solver.noteRemovedVariable(v, subject);
         }
-        this.terms.delete(v);
+        this.terms["delete"](v);
       } else {
         this.setVariable(v, newCoefficient);
       }
@@ -191,7 +191,7 @@ c.Expression = c.inherit({
     var setVariable = this.setVariable.bind(this);
     var terms = this.terms;
     var multiplier = terms.get(outvar);
-    terms.delete(outvar);
+    terms["delete"](outvar);
     this.constant += (multiplier * expr.constant);
     /*
     console.log("substituteOut:",
@@ -206,7 +206,7 @@ c.Expression = c.inherit({
         var newCoefficient = oldCoefficient + multiplier * coeff;
         if (c.approx(newCoefficient, 0)) {
           solver.noteRemovedVariable(clv, subject);
-          terms.delete(clv);
+          terms["delete"](clv);
         } else {
           terms.set(clv, newCoefficient);
         }
@@ -229,7 +229,7 @@ c.Expression = c.inherit({
     if (c.trace) c.fnenterprint("newSubject:" + subject);
 
     var reciprocal = 1 / this.terms.get(subject);
-    this.terms.delete(subject);
+    this.terms["delete"](subject);
     this.multiplyMe(-reciprocal);
     return reciprocal;
   },
