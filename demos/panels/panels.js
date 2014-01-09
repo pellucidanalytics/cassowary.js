@@ -285,8 +285,8 @@ scope.Panel = c.inherit({
     // comparing offsets.
     if (e.target == this) {
       var start = this._moveStartLocation;
-      start.x = e.pageX;
-      start.y = e.pageY;
+      start.setX(e.pageX);
+      start.setY(e.pageY);
       start.left = this.v.left.value;
       start.top = this.v.top.value;
       s.addEditVar(this.v.left, medium)

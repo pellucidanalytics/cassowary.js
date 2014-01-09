@@ -17,8 +17,8 @@ var DraggableBox = c.inherit({
 
   get center() { return this._center; },
   set center(v) {
-    this._center.x = v.x;
-    this._center.y = v.y;
+    this._center.setX(v.x);
+    this._center.setY(v.y);
   },
 
   get x() { return this._center.x; },

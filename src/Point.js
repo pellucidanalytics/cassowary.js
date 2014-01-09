@@ -9,40 +9,38 @@
 c.Point = c.inherit({
   initialize: function(x, y, suffix) {
     if (x instanceof c.Variable) {
-      this._x = x;
+      this.x = x;
     } else {
       var xArgs = { value: x };
       if (suffix) {
         xArgs.name = "x" + suffix;
       }
-      this._x = new c.Variable(xArgs);
+      this.x = new c.Variable(xArgs);
     }
     if (y instanceof c.Variable) {
-      this._y = y;
+      this.y = y;
     } else {
       var yArgs = { value: y };
       if (suffix) {
         yArgs.name = "y" + suffix;
       }
-      this._y = new c.Variable(yArgs);
+      this.y = new c.Variable(yArgs);
     }
   },
 
-  get x() { return this._x; },
-  set x(x) {
+  setX: function(x) {
     if (x instanceof c.Variable) {
-      this._x = x;
+      this.x = x;
     } else {
-      this._x.value = x;
+      this.x.value = x;
     }
   },
 
-  get y() { return this._y; },
-  set y(y) {
+  setY: function(y) {
     if (y instanceof c.Variable) {
-      this._y = y;
+      this.y = y;
     } else {
-      this._y.value = y;
+      this.y.value = y;
     }
   },
 
