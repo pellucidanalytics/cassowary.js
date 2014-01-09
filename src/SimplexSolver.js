@@ -436,7 +436,7 @@ c.SimplexSolver = c.inherit({
     }
     var e = this.rows.get(av);
     if (e != null) {
-      if (e.isConstant) {
+      if (e.isConstant()) {
         this.removeRow(av);
         this.removeRow(az);
         return;

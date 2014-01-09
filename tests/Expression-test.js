@@ -104,9 +104,9 @@ define([
 			var e2 = new c.Expression(10);
 			var e3 = new c.Expression(new c.Variable({ value: 10 }), 20, 2);
 
-			assert.deepEqual(true, e1.isConstant);
-			assert.deepEqual(true, e2.isConstant);
-			assert.deepEqual(false, e3.isConstant);
+			assert.deepEqual(true, e1.isConstant());
+			assert.deepEqual(true, e2.isConstant());
+			assert.deepEqual(false, e3.isConstant());
 		});
 
 		it('multiplyMe', function () {
@@ -326,7 +326,7 @@ define([
 			assert.deepEqual(e.newSubject(v), 1 / 2);
 			assert.deepEqual(e.constant, -2.5);
 			assert.deepEqual(null, e.terms.get(v));
-			assert.deepEqual(true, e.isConstant);
+			assert.deepEqual(true, e.isConstant());
 		});
 
 		it('changeSubject', function () {
