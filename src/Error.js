@@ -11,10 +11,11 @@
     initialize: function(s /*String*/) { if (s) { this._description = s; } },
     _name: "c.Error",
     _description: "An error has occured in Cassowary",
-    set description(v)   { this._description = v; },
-    get description()    { return "(" + this._name + ") " + this._description; },
-    get message()        { return this.description; },
-    toString: function() { return this.description; },
+    description: function() {
+      return "(" + this._name + ") " + this._description;
+    },
+    message: function()  { return this.description(); },
+    toString: function() { return this.description(); },
   });
 
   var errorType = function(name, error) {
