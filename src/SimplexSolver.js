@@ -614,7 +614,7 @@ c.SimplexSolver = c.inherit({
     if (c.trace) {
       c.fnenterprint("newExpression: " + cn);
       c.traceprint("cn.isInequality == " + cn.isInequality);
-      c.traceprint("cn.required == " + cn.required);
+      c.traceprint("cn.required == " + cn.required());
     }
 
     var cnExpr = cn.expression;
@@ -657,7 +657,7 @@ c.SimplexSolver = c.inherit({
       expr.setVariable(slackVar, -1);
 
       this._markerVars.set(cn, slackVar);
-      if (!cn.required) {
+      if (!cn.required()) {
         ++this._slackCounter;
         eminus = new c.SlackVariable({
           value: this._slackCounter,
@@ -670,7 +670,7 @@ c.SimplexSolver = c.inherit({
         this.noteAddedVariable(eminus, this._objective);
       }
     } else {
-      if (cn.required) {
+      if (cn.required()) {
         c.trace && c.traceprint("Equality, required");
         // Add a dummy variable to the Expression to serve as a marker for this
         // constraint.  The dummy variable is never allowed to enter the basis

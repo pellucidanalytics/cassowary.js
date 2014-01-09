@@ -16,7 +16,10 @@ c.AbstractConstraint = c.inherit({
   isEditConstraint: false,
   isInequality:     false,
   isStayConstraint: false,
-  get required() { return (this.strength === c.Strength.required); },
+
+  required: function(){
+    return (this.strength === c.Strength.required);
+  },
 
   toString: function() {
     // this is abstract -- it intentionally leaves the parens unbalanced for

@@ -27,12 +27,12 @@ define([
 
 		describe('statics required values', function () {
 			it('is true for c.Strength.required', function () {
-				assert.isTrue(c.Strength.required.required);
+				assert.isTrue(c.Strength.required.required());
 			});
 			it('is false for all the others', function () {
-				assert.isFalse(c.Strength.strong.required);
-				assert.isFalse(c.Strength.medium.required);
-				assert.isFalse(c.Strength.weak.required);
+				assert.isFalse(c.Strength.strong.required());
+				assert.isFalse(c.Strength.medium.required());
+				assert.isFalse(c.Strength.weak.required());
 			});
 		});
 
@@ -103,7 +103,7 @@ define([
 				assert.isTrue(c.approx(z.value, 50.0));
 			});
 		});
-    
+
 		// FIXME(slightlyoff): MOAR TESTS
 	});
 });
